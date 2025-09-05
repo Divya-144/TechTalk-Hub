@@ -1,0 +1,27 @@
+# Development files
+src/
+public/
+node_modules/
+*.log
+.env.local
+.env.development.local
+.env.test.local
+
+# Build artifacts
+build/
+dist/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
