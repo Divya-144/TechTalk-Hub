@@ -4,7 +4,7 @@ const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: "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",
   defaultHeaders: {
-    "HTTP-Referer": window.location.origin,
+    "HTTP-Referer": "https://tech-talk-hub-9pws.vercel.app/",
     "X-Title": "TechTalk Hub",
   },
   dangerouslyAllowBrowser: true
