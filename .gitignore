@@ -23,8 +23,6 @@ dist/
 *.swo
 *~
 
-.vercelignore
-
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -87,6 +85,7 @@ jspm_packages/
 
 # Gatsby files
 .cache/
+public
 
 # Storybook build outputs
 .out

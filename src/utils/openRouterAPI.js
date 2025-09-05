@@ -2,9 +2,9 @@ import OpenAI from 'openai';
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: "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",
+  apiKey: process.env.REACT_APP_OPENROUTER_API_KEY || "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",
   defaultHeaders: {
-    "HTTP-Referer": "https://tech-talk-hub-9pws.vercel.app/",
+    "HTTP-Referer": typeof window !== 'undefined' ? window.location.origin : "https://tech-talk-hub-9pws.vercel.app",
     "X-Title": "TechTalk Hub",
   },
   dangerouslyAllowBrowser: true
@@ -12,6 +12,9 @@ const openai = new OpenAI({
 
 export const callOpenRouter = async (messages, model = 'openai/gpt-oss-20b:free') => {
   try {
+    console.log('Making OpenRouter API call with model:', model);
+    console.log('API Key present:', !!process.env.REACT_APP_OPENROUTER_API_KEY);
+    
     const completion = await openai.chat.completions.create({
       model: model,
       messages: messages,
@@ -19,13 +22,29 @@ export const callOpenRouter = async (messages, model = 'openai/gpt-oss-20b:free'
       temperature: 0.7
     });
 
+    console.log('OpenRouter API response received');
     return completion.choices[0].message.content;
   } catch (error) {
     console.error('OpenRouter API Error:', error);
+    console.error('Error details:', {
+      message: error.message,
+      status: error.status,
+      type: error.type
+    });
     
     // Check if it's an authentication error
-    if (error.message && error.message.includes('User not found')) {
+    if (error.message && (error.message.includes('User not found') || error.message.includes('401'))) {
       throw new Error('API Key is invalid or expired. Please check your OpenRouter API key.');
+    }
+    
+    // Check for CORS errors
+    if (error.message && error.message.includes('CORS')) {
+      throw new Error('CORS error: Please check your domain configuration in OpenRouter.');
+    }
+    
+    // Check for rate limiting
+    if (error.status === 429) {
+      throw new Error('Rate limit exceeded. Please try again later.');
     }
     
     throw error;

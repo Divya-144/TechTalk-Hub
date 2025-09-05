@@ -18,5 +18,8 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "REACT_APP_OPENROUTER_API_KEY": "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"
+  }
 }
