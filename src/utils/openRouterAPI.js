@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 
 const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
-  apiKey: "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",
+  apiKey: "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",
   defaultHeaders: {
     "HTTP-Referer": window.location.origin,
     "X-Title": "TechTalk Hub",
