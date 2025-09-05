@@ -86,23 +86,6 @@ const Automation = () => {
     }
   ];
 
-  const automationData = {
-    teacher: { risk: 'Low', score: 20, reason: 'Requires human interaction, emotional intelligence, and personalized teaching' },
-    driver: { risk: 'High', score: 85, reason: 'Autonomous vehicles and delivery systems are rapidly advancing' },
-    doctor: { risk: 'Low', score: 15, reason: 'Requires complex decision-making, empathy, and patient interaction' },
-    cashier: { risk: 'High', score: 90, reason: 'Self-checkout systems and automated retail are already widespread' },
-    accountant: { risk: 'Medium', score: 60, reason: 'Many routine tasks can be automated, but complex analysis requires human judgment' },
-    lawyer: { risk: 'Low', score: 25, reason: 'Requires complex reasoning, client relationships, and ethical decision-making' },
-    nurse: { risk: 'Low', score: 30, reason: 'Requires physical care, emotional support, and human touch' },
-    engineer: { risk: 'Medium', score: 45, reason: 'Design and problem-solving can be assisted by AI, but creativity remains human' },
-    chef: { risk: 'Medium', score: 50, reason: 'Cooking robots exist, but creativity and taste remain uniquely human' },
-    artist: { risk: 'Low', score: 20, reason: 'Creativity, emotional expression, and unique perspective are human traits' },
-    therapist: { risk: 'Low', score: 10, reason: 'Requires deep human connection, empathy, and emotional intelligence' },
-    salesperson: { risk: 'Medium', score: 55, reason: 'Online sales and AI recommendations are growing, but relationship-building is key' },
-    farmer: { risk: 'Medium', score: 65, reason: 'Precision agriculture and automation are advancing, but decision-making remains crucial' },
-    mechanic: { risk: 'Medium', score: 40, reason: 'Diagnostic tools help, but hands-on problem-solving and creativity are essential' },
-    writer: { risk: 'Medium', score: 50, reason: 'AI can assist with content generation, but original thought and creativity are human' }
-  };
 
   const checkAutomationRisk = async () => {
     const jobToAnalyze = analysisMode === 'preset' ? selectedJob : customJob;
